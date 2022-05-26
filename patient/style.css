@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
+
+.row{
+  margin-top: 20px;
+}
+.card_img_top{
+  height: 200px!important;
+  margin: auto auto;
+  
+}
+.overlay p{
+ 
+  text-decoration: dotted;
+  text-transform: initial;
+}
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+*/
+
+
+.img-wrapper {
+  max-width: 300px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  align-items: center;
+  margin: auto;
+}
+
+.img-wrapper img {
+  /*max-width: 100%;*/
+  display: block;
+  transition: transform 0.3s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, transparent 40%, #000);
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-family: Poppins;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 10px 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.overlay h3,
+.overlay p {
+  transform: translateY(100px);
+  transition: transform 0.3s;
+}
+
+.overlay h3 {
+  transition-delay: 0.1s;
+}
+
+.img-wrapper:hover img {
+  transform: scale(1.15);
+}
+
+.img-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.img-wrapper:hover .overlay h3,
+.img-wrapper:hover .overlay p {
+  transform: translateY(0);
+}
+
+.img-wrapper:hover .overlay p {
+  transition-delay: 0.2s;
+}
+select {
+   -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+   border:0!important;
+   background:  #d3ddd6;
+   background-image: none;
+   padding: 0 .5em;
+   color:#fff;
+   cursor:pointer;
+   font-size: 1em;
+   display: inline !important;
+   font-family: 'Open Sans', sans-serif;
+}
+select::-ms-expand {
+    display: none;
+}
+.select {
+   position: relative;
+   
+   width: 20em;
+   height: 3em;
+   line-height: 3;
+   background: #2185cc;
+   overflow: hidden;
+   border-radius: .25em;
+}
+.select::after {
+   content: '\25BC';
+   position: absolute;
+   top: 0;
+   right: 0;
+   padding: 0 1em;
+   background: #2b2e2e;
+   cursor:pointer;
+   pointer-events:none;
+   transition:.25s all ease;
+}
+.select:hover::after {
+   color: #23b499;
+}
+.button{
+    height: 40px;
+    margin-top: 10px;
+    display: inline-flex;
+    padding: 0;
+    background: #2185cc;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+.button:hover{
+    background: #23b499;
+}
+.button:active{
+    background: #2185cc;
+}
+.button_text,
+.button_icon{
+    display: inline-flex;
+    align-items: center;
+    padding: 0 24px;
+    color: white;
+    height: 100%;
+}
+.content1{
+  width: 100%;
+  height: auto;
+  display: flex;
+flex-direction: row;
+/*justify-content: space-between;*/
+flex-flow: wrap;
+padding-bottom: 20px;
+
+}
+.card1{
+  width: 40%;
+  height: 350px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+@media screen and (max-width:600px) 
+{.card1{
+  width: 50%;
+ }
+  
+}
+.btn{
+  width: 100%;
+  text-align: center;
+  background-color: rgb(7, 212, 116);
+}
+.information{
+  text-align: center;
+  background-color: #8dcfc3;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  
+  align-items: center;
+  
+}
+.information button{
+  margin-top: 5%;
+}
+.svg-link {
+  color: #444;
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.svg-link svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.outline {
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: #4700d8;
+  fill: transparent;
+  stroke-dasharray: 59 235;
+  stroke-dashoffset: -235;
+  transition: all 0.9s;
+}
+
+.svg-link:hover {
+  color: #4700d8;
+}
+
+.svg-link:hover .outline {
+  stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 379;
+}
+.content2{
+  width: 30%;
+  float: right;
+  
+  height: 500px;
+}
+.content1{
+  width: 70%;
+  float: left;
+}
+.img_profile{
+ width: 100%;
+  height: 50%;
+  
+}
+.img_profile img{
+  height: 100%;
+  border-radius: 100%;
+}
+.contenu_profile h3 {
+  
+  font-family: cursive;
+}
+.contenu_profile {
+  text-align: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(3, 3, 3);
+  
+}
+.contenu_profile i {
+ font-size: 15px;
+}
+.rs{
+  font-size: x-large;
+}
+
+

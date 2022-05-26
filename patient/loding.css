@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
+
+.lod{
+  
+ /* height:30vh;*/
+  display:grid;
+  place-items:center;
+  background-color:#f8f5f5;
+  font-family:"Cinzel Decorative", cursive;
+}
+
+.pulse{
+  stroke-dasharray:1840;
+  stroke-dashoffset:3680;
+  animation:dash 2s ease-out infinite;
+  stroke:url(#strokeGradient);
+}
+
+@keyframes dash{
+  to{
+    stroke-dashoffset:0;
+  }
+}
+
+.loader span{
+  color:rgb(0, 0, 0);
+  display:block;
+  text-align:center;
+  font-size:35px;
+  margin-top:15px;
+  animation:blink 900ms linear infinite alternate;
+}
+
+@keyframes blink{
+  from{
+    opacity:0;
+  }
+  
+  to{
+    opacity:1;
+  }
+}

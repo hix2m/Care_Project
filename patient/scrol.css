@@ -1,0 +1,31 @@
+
+.head{
+    
+    height:50vh;
+    display:grid;
+    place-items:center;
+    background-color:rgb(27 15 209);
+}
+  
+
+
+  
+.text{
+    color:#fff;
+    text-transform:uppercase;
+    font-size:56px;
+    font-family:verdana;
+    position:relative;
+  }
+  
+  .text::before{
+    content:attr(data-text);
+    position:absolute;
+    left:0;
+    bottom:12px;
+    transform:rotateX(180deg);
+    transform-origin:bottom;
+    background-image:linear-gradient(to top, rgba(255,255,255,0.15), transparent 95%);
+    -webkit-background-clip:text;
+    color:transparent;
+  }
