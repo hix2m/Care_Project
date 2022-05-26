@@ -4,7 +4,7 @@ include_once 'assets/conn/dbconnect.php';
 ?>
 
 
-<!-- login -->
+<!-- Se Connecter  -->
 <!-- check session -->
 <?php
 session_start();
