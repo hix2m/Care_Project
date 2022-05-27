@@ -252,7 +252,9 @@ padding-bottom: 20px;
 }
 .img_profile img{
   height: 100%;
-  border-radius: 100%;
+  max-width: 100%;
+  border-radius: 50px;
+  margin-top: 10px;
 }
 .contenu_profile h3 {
   

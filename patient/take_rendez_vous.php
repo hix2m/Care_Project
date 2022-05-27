@@ -169,10 +169,10 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 					<?php 
 						if($doctorRow['image_profile'] != null){
 							?>
-								<img style="width: 100%;" src="assets/Image_Profil/<?php echo $doctorRow['image_profile']; ?>" alt="" srcset="">	
+								<img  src="assets/Image_Profil/<?php echo $doctorRow['image_profile']; ?>" alt="" srcset="">	
 							<?php
 						}else{?>
-								<img style="width: 100%;" src="assets/Image_Profil/profile_not_found_homme.png" alt="" srcset="">	
+								<img  src="assets/Image_Profil/profile_not_found_homme.png" alt="" srcset="">	
 	
 						<?php
 						}
@@ -192,11 +192,203 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 				</div>
 			</div>
 		</section>
-		<section class="commentaire">
-				<div>
-				     
-				</div>
-		</section>
+		<div class="commentaire">
+						<?php
+
+				$db = "db_healthcare";
+				$host = "localhost";
+				$conn = mysqli_connect($host,"root","",$db);
+				if($conn == FALSE){
+					echo "problem de connection ";
+				}
+
+				$sql = "select * from commentairs c Inner JOIN patient p On  c.patient = p.PatientCin";
+				$query =  mysqli_query($conn,$sql);
+
+				if(isset($_POST["stars"])){
+					echo 'Value is '. $_POST['commentaire'];
+					$commentaire = mysqli_real_escape_string($conn,$_POST['contenu_commentaire']);
+					$sql = "insert into commentairs(doctor,pation,Commantaire,evaluation) values('EE1245',920517105553,'".$_POST['contenu_commentaire']."',".$_POST['commentaire']."";
+					$res = mysqli_query($conn,"INSERT INTO commentairs(doctor,pation,Commentaire,evaluation) VALUES('EE1245',920517105553,'".$commentaire."',".$_POST['commentaire'].")");
+
+
+				}
+
+
+				?>
+
+
+					<style>
+						.star {
+							font-size: 1.5rem;
+							
+						}
+						
+						.hover {
+							color: rgb(255, 196, 0);
+						}
+						.star_res {
+							color: rgb(255, 196, 0);
+						}
+						.comment{
+							
+							width: 100%;
+							margin-top: 0px;
+							
+						}
+						.com{
+							width: 80%;
+							height: auto;
+							border: 2px black solid;
+							border-radius: 10px;
+							background-color: #00df8d;
+							margin-left: 50px;
+							margin-top: 10px;
+							text-align: justify;
+						}
+						.com strong{
+						align-items: flex-end;
+						
+						}
+						#contenu{
+							display: block;
+							width: 100%;
+							height: 100px;
+						}
+						.btn_com{
+							margin-left: 20%;
+							color: white;
+							background-color: black;
+							width: 100px;
+							height: 40px;
+							border-radius: 20px;
+							
+						}.stars{
+							margin-right: 0px;
+						}
+						.cm{
+							margin-left: 10px;
+						}
+						.commentaire {
+							/* float: left; */
+							margin-top: 500px;
+							width: 100%;
+							margin-left: 10px;
+							background-color: #defdf7;
+							
+						}
+					</style>
+
+
+
+					<form action="" method="POST">
+						<fieldset >
+						<legend><h1 style="color: brown;">Donner Votre Commentaire a docteur  </h1></legend>
+						<textarea name="contenu_commentaire" id="contenu"  placeholder="Ecrire Votre Commentaire Ici">
+							
+						</textarea>
+						<i class="star" data-note="1">&#9733;</i>
+						<i class="star" data-note="2">&#9733;</i>
+						<i class="star" data-note="3">&#9733;</i>
+						<i class="star" data-note="4">&#9733;</i>
+						<i class="star" data-note="5">&#9733;</i>
+						<i class="note">Note:</i>
+						<input style="display: none;" type="text" name="commentaire" id="commentaire"><br>
+						<button class="btn_com" type="submit" name="stars">Envouyer</button>
+						
+						
+						</fieldset>
+						
+					</form>
+					
+					<script>
+						const stars = document.querySelectorAll('.star');
+						let check = false;
+						stars.forEach(star => {
+							star.addEventListener('mouseover', selectStars);
+							star.addEventListener('mouseleave', unselectStars);
+							star.addEventListener('click', activeSelect);
+						})
+
+						function selectStars(e) {
+							const data = e.target;
+							const etoiles = priviousSiblings(data);
+							if (!check) {
+								etoiles.forEach(etoile => {
+									etoile.classList.add('hover');
+								})
+							}
+
+						}
+
+						function unselectStars(e) {
+							const data = e.target;
+							const etoiles = priviousSiblings(data);
+							if (!check) {
+								etoiles.forEach(etoile => {
+									etoile.classList.remove('hover');
+								})
+							}
+						}
+
+						function activeSelect(e) {
+							if (!check) {
+								check = true;
+								document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
+								document.getElementById('commentaire').value = e.target.dataset.note ;
+							}
+						}
+
+						function priviousSiblings(data) {
+							let values = [data];
+							while (data = data.previousSibling) {
+								if (data.nodeName === 'I') {
+									values.push(data);
+								}
+							}
+							return values;
+						}
+					</script>
+
+					<?php if($res= mysqli_num_rows($query) == 0){
+						?>
+						<strong>N'excicte aucun commentaire</strong>
+						
+						<?php
+					} 
+					else{
+					?>   
+					<div class="comment">
+						<fieldset>
+							<legend>
+							<h3 style="color: brown;">Options de certins patients sur Docteur</h3>
+							</legend>
+							<?php
+							while($res = mysqli_fetch_assoc($query)){
+
+							
+							?>
+							<div class="com">
+								<strong class="cm"><?php echo $res['patientFirstName']." ".$res['patientLastName'] ;?></strong>
+								<p class="cm"> 
+								<?php echo $res['Commentaire']?>
+								</p>
+								<strong class="stars cm">Evaluaez : <?php echo $res['stars']?><i class="star_res">&#9733;</i></strong>
+							</div>
+							
+							<?php
+							}
+
+							
+							?>
+						</fieldset>
+						
+					</div>
+
+				<?php 
+				}
+				?>
+		</div>
 		
 		<script src="assets/js/jquery.js"></script>
 		<script src="assets/js/date/bootstrap-datepicker.js"></script>

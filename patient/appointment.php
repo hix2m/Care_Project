@@ -2,8 +2,7 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 $session= $_SESSION['patientSession'];
-// $appid=null;
-// $appdate=null;
+
 if (isset($_GET['scheduleDate']) && isset($_GET['appid'])) {
 	$appdate =$_GET['scheduleDate'];
 	$appid = $_GET['appid'];
@@ -17,45 +16,51 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 	
 //INSERT
 if (isset($_POST['appointment'])) {
-$cin_patient = mysqli_real_escape_string($con,$userRow['PatientCin']);
-$scheduleid = mysqli_real_escape_string($con,$appid);
-$symptom = mysqli_real_escape_string($con,$_POST['symptom']);
-$comment = mysqli_real_escape_string($con,$_POST['comment']);
-$avail = "notavail";
+	$patientcne = mysqli_real_escape_string($con,$userRow['PatientCin']);
+	$scheduleid = mysqli_real_escape_string($con,$appid);
+	$symptom = mysqli_real_escape_string($con,$_POST['symptom']);
+	$comment = mysqli_real_escape_string($con,$_POST['comment']);
+	$avail = "notavail";
 
 
-$query = "INSERT INTO appointment (  PatientCin , scheduleId , appSymptom , appComment  )
-VALUES ( '$cin_patient', '$scheduleid', '$symptom', '$comment') ";
+	$query = "INSERT INTO appointment (  PatientCin , scheduleId , appSymptom , appComment  )
+	VALUES ( '$patientcne',$scheduleid, '$symptom', '$comment') ";
 
-//update table appointment schedule
-$sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
-$scheduleres=mysqli_query($con,$sql);
-if ($scheduleres) {
-	$btn= "disable";
-} 
+	$result = mysqli_query($con,$query);
+	//update table appointment schedule
+	$sql1 = "SELECT COUNT($scheduleid) as nombre  from appointment where  scheduleId = $scheduleid";
+	$sql2 = "SELECT nombre_patient from doctorschedule  where  scheduleId = $scheduleid";
+	$count = mysqli_query($con,$sql1);
+	$res_count = mysqli_fetch_array($count,MYSQLI_ASSOC);
 
-
-$result = mysqli_query($con,$query);
-// echo $result;
-if( $result )
-{
-?>
-<script type="text/javascript">
-alert('Appointment made successfully.');
-</script>
-<?php
-header("Location: patientapplist.php");
-}
-else
-{
-	echo mysqli_error($con);
-?>
-<script type="text/javascript">
-alert('Appointment booking fail. Please try again.');
-</script>
-<?php
-header("Location: patient/patient.php");
-}
+	$nomber_patient = mysqli_query($con,$sql2);
+	$res_nombrepatient = mysqli_fetch_array($nomber_patient,MYSQLI_ASSOC);
+	if($res_count['nombre'] >= $res_nombrepatient['nombre_patient']){
+		$sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
+		$scheduleres=mysqli_query($con,$sql);
+		if ($scheduleres) {
+			$btn= "disable";
+		} 
+	}
+	if( $result )
+	{
+	?>
+	<script>
+	alert('Appointment made successfully.');
+	</script>
+	<?php
+	header("Location: patientapplist.php");
+	}
+	else
+	{
+		echo mysqli_error($con);
+	?>
+	<script>
+	alert('Appointment booking fail. Please try again.');
+	</script>
+	<?php
+	header("Location: patient/patient.php");
+	}
 //dapat dari generator end
 }
 ?>
@@ -147,7 +152,7 @@ header("Location: patient/patient.php");
 									<h5> <strong> Date de Naissace : <?php echo $userRow['patientDOB']; ?> </strong></h5>
 									<h5> <strong> Email : <?php echo $userRow['patientEmail']; ?> </strong></h5>
 									<hr />
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">mettre a jour Profile</button>
+									<!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">mettre a jour Profile</button-->
 								</div>
 							</div>
 						</div>

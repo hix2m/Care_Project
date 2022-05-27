@@ -27,6 +27,12 @@ $userRow=mysqli_fetch_assoc($res);
 		<link href="assets/css/default/style.css" rel="stylesheet">
 		<link href="assets/css/default/blocks.css" rcel="stylesheet">
 		<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
+		<style>
+			.imp{
+				align-items: center;
+				font-size: 30px;
+			}
+		</style>
 
 	</head>
 	<body>
@@ -123,7 +129,7 @@ echo "<td>" . $userRow['scheduleDay'] . "</td>";
 echo "<td>" . $userRow['scheduleDate'] . "</td>";
 echo "<td>" . $userRow['startTime'] . "</td>";
 echo "<td>" . $userRow['endTime'] . "</td>";
-echo "<td><a href='invoice.php?appid=".$userRow['appId']."&doctor=".$userRow['DoctorCin']."' target='_blank'><span class='glyphicon glyphicon-print' aria-hidden='true'></span></a> </td>";
+echo "<td><a href='invoice.php?appid=".$userRow['appId']."&doctor=".$userRow['DoctorCin']."' target='_blank'><ion-icon name='document-text-outline' claass='imp'></ion-icon></a> </td>";
 }
 
 echo "</tr>";
@@ -138,5 +144,7 @@ echo "</table>";
 <!-- display appoinment end -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
