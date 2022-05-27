@@ -14,14 +14,14 @@ header("Location: patient/patient.php");
 }
 if (isset($_POST['login']))
 {
-$icPatient = mysqli_real_escape_string($con,$_POST['icPatient']);
+$CIN = mysqli_real_escape_string($con,$_POST['icPatient']);
 $password  = mysqli_real_escape_string($con,$_POST['password']);
 
-$res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'");
+$res = mysqli_query($con,"SELECT * FROM patient WHERE PatientCin = '$CIN'");
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 if ($row['password'] == $password)
 {
-$_SESSION['patientSession'] = $row['icPatient'];
+$_SESSION['patientSession'] = $row['PatientCin'];
 ?>
 <script type="text/javascript">
 alert('Login Success');
@@ -43,7 +43,7 @@ if (isset($_POST['signup'])) {
 $patientFirstName = mysqli_real_escape_string($con,$_POST['patientFirstName']);
 $patientLastName  = mysqli_real_escape_string($con,$_POST['patientLastName']);
 $patientEmail     = mysqli_real_escape_string($con,$_POST['patientEmail']);
-$icPatient     = mysqli_real_escape_string($con,$_POST['icPatient']);
+$cin2    = mysqli_real_escape_string($con,$_POST['icPatient']);
 $password         = mysqli_real_escape_string($con,$_POST['password']);
 $month            = mysqli_real_escape_string($con,$_POST['month']);
 $day              = mysqli_real_escape_string($con,$_POST['day']);
@@ -52,7 +52,7 @@ $patientDOB       = $year . "-" . $month . "-" . $day;
 $patientGender = mysqli_real_escape_string($con,$_POST['patientGender']);
 //INSERT
 $query = " INSERT INTO patient (  icPatient, password, patientFirstName, patientLastName,  patientDOB, patientGender,   patientEmail )
-VALUES ( '$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail' ) ";
+VALUES ( '$cin2', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender', '$patientEmail' ) ";
 $result = mysqli_query($con, $query);
 
 if( $result )
@@ -67,7 +67,7 @@ else
 {
 ?>
 <script type="text/javascript">
-alert('User already registered. Please try again');
+alert('Vous aver deja un conte avec ce CIN ');
 </script>
 <?php
 }
@@ -80,19 +80,14 @@ alert('User already registered. Please try again');
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Clinic Appointment Application</title>
-        <!-- Bootstrap -->
-        <!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
+        <title>Care Project</title>
+    
         <link href="assets/css/style.css" rel="stylesheet">
         <link href="assets/css/style1.css" rel="stylesheet">
         <link href="assets/css/blocks.css" rel="stylesheet">
         <link href="assets/css/date/bootstrap-datepicker.css" rel="stylesheet">
         <link href="assets/css/date/bootstrap-datepicker3.css" rel="stylesheet">
-        <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-        <!-- <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />  -->
-
-        <!--Font Awesome (added because you use icons in your prepend/append)-->
+  
         <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
         <link href="assets/css/material.css" rel="stylesheet">
     </head>
@@ -339,34 +334,18 @@ alert('User already registered. Please try again');
                  
                
         </section>
-        <!-- first section end -->
-
-        
-        <!-- second section start -->
-        
-        
-        <!-- second section end -->
-        <!-- third section start -->
-        
-        <!-- third section end -->
-        <!-- forth sections start -->
-        
-        <!-- forth section end -->
-        <!-- footer start -->
+       
         <div class="copyright-bar bg-black">
             <div class="container">
                 <p class="pull-right small"><a href="adminlogin.php">admin</a></p>
             </div>
         </div>
-        <!-- footer end -->
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/date/bootstrap-datepicker.js"></script>
     <script src="assets/js/moment.js"></script>
     <script src="assets/js/transition.js"></script>
     <script src="assets/js/collapse.js"></script>
-     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $('#myModal').on('shown.bs.modal', function () {
@@ -377,7 +356,7 @@ alert('User already registered. Please try again');
   
 <script>
     $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var date_input=$('input[name="date"]'); 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
             format: 'yyyy-mm-dd',

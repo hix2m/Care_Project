@@ -8,7 +8,7 @@ if(!isset($_SESSION['patientSession']))
 {
  header("Location: ../fail.php");
 }
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$_SESSION['patientSession']);
+$res=mysqli_query($con,"SELECT * FROM patient WHERE PatientCin=".$_SESSION['patientSession']);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>

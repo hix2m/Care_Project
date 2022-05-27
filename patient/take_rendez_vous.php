@@ -9,9 +9,9 @@ header("Location: ../index.php");
 }
 $_SESSION['doctor_cne'] = $_POST['rendez_vous'];
 $usersession = $_SESSION['patientSession'];
-$query = "select * from doctor where icDoctor LIKE '".$_POST['rendez_vous']."'";
+$query = "select * from doctor where DoctorCin LIKE '".$_POST['rendez_vous']."'";
 $res_doctor = mysqli_query($con,$query);
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM patient WHERE PatientCin='".$usersession."'");
 
 if ($res===false) {
 	echo mysqli_error($con);
@@ -30,13 +30,10 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Prendez rendez vous </title>
-		<!-- Bootstrap -->
-		<!-- <link href="assets/css/bootstrap.min.css" rel="stylesheet"> -->
+
 		<link href="assets/css/material.css" rel="stylesheet">
 		<link href="assets/css/default/style.css" rel="stylesheet">
-		<!-- <link href="assets/css/default/style1.css" rel="stylesheet"> -->
 		<link href="assets/css/default/blocks.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker3.css" rel="stylesheet">
@@ -46,10 +43,9 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 	</head>
 	<body>
 		
-		<!-- navigation -->
+		<!-- Menu -->
 		<nav class="navbar navbar-default " role="navigation">
 			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
@@ -64,8 +60,8 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 					<ul class="nav navbar-nav">
 						<ul class="nav navbar-nav">
 							 <li><a href="patient.php">Home</a></li>
-							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>">Rendez vous </a></li>
+							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Rendez vous </a></li>
 						</ul>
 					</ul>
 					
@@ -74,10 +70,10 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez vous </a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez vous </a>
 								</li>
 								<li class="divider"></li>
 								<li>
@@ -199,7 +195,7 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 		</section>
 		<section class="commentaire">
 				<div>
-				    
+				     
 				</div>
 		</section>
 		

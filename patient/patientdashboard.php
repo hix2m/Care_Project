@@ -9,7 +9,7 @@ if(!isset($_SESSION['patientSession']))
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['patientSession'];
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM patient WHERE PatientCin=".$usersession);
 $userRow=mysqli_fetch_array($res);
 echo mysqli_error($con);
 ?>

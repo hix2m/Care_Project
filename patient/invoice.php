@@ -7,11 +7,11 @@ $appid=$_GET['appid'];
 $doctor=$_GET['doctor'];
 $res=mysqli_query($con, "SELECT d.*, a.*, b.*,c.* FROM patient a
 JOIN appointment b
-On a.icPatient = b.patientIc
+On a.PatientCin = b.PatientCin
 JOIN doctorschedule c
 On b.scheduleId=c.scheduleId
 JOIN doctor d
-  On d.icDoctor = c.doctor
+  On d.DoctorCin = c.doctor
 WHERE b.appId  =".$appid." and c.doctor = '".$doctor."'");
 
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
@@ -52,7 +52,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                 <?php echo 'Nom et Prénom : '.$userRow['patientFirstName'];?> <?php echo $userRow['patientLastName'];?><br>
                                 </td>
                                 
-                                <td><?php echo 'CNE : '.$userRow['patientIc'];?><br>
+                                <td><?php echo 'CNE : '.$userRow['PatientCin'];?><br>
                                     <?php echo 'Adress : '.$userRow['patientAddress'];?>
                                     <?php echo 'Emeil : '.$userRow['patientEmail'];?>
                                 </td>

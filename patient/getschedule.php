@@ -2,7 +2,7 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 $q = $_GET['q'];
-$res_doctor = mysqli_query($con,"SELECT * FROM doctor WHERE icDoctor ='".$_SESSION['doctor_cne']."'");
+$res_doctor = mysqli_query($con,"SELECT * FROM doctor WHERE DoctorCin ='".$_SESSION['doctor_cne']."'");
 $res = mysqli_query($con,"SELECT * FROM doctorschedule WHERE scheduleDate='$q' and doctor ='".$_SESSION['doctor_cne']."'");
 if (!$res) {
 die("Error running $sql: " . mysqli_error($con));

@@ -4,16 +4,16 @@ include_once '../assets/conn/dbconnect.php';
 $session=$_SESSION[ 'patientSession'];
 $res=mysqli_query($con, "SELECT d.*, a.*, b.*,c.* FROM patient a
 	JOIN appointment b
-		On a.icPatient = b.patientIc
+		On a.PatientCin = b.PatientCin
 	JOIN doctorschedule c
 		On b.scheduleId=c.scheduleId
 	JOIN doctor d
-	   ON d.icDoctor = c.doctor
-	WHERE b.patientIc ='$session'");
+	   ON d.DoctorCin = c.doctor
+	WHERE b.PatientCin ='$session'");
 	if (!$res) {
 		die( "Error running $sql: " . mysqli_error($con));
 	}
-	$userRow=mysqli_fetch_array($res);
+$userRow=mysqli_fetch_assoc($res);
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,8 +48,8 @@ $res=mysqli_query($con, "SELECT d.*, a.*, b.*,c.* FROM patient a
 					<ul class="nav navbar-nav">
 						<ul class="nav navbar-nav">
 							<li><a href="patient.php">Home</a></li>
-							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>">Rendez Vous</a></li>
+							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Rendez Vous</a></li>
 						</ul>
 					</ul>
 					
@@ -58,10 +58,10 @@ $res=mysqli_query($con, "SELECT d.*, a.*, b.*,c.* FROM patient a
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez Vous</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez Vous</a>
 								</li>
 								<li class="divider"></li>
 								<li>
@@ -101,12 +101,12 @@ echo "</tr>";
 echo "</thead>";
 $res = mysqli_query($con, "SELECT d.*, a.*, b.*,c.* FROM patient a
 	JOIN appointment b
-		On a.icPatient = b.patientIc
+		On a.PatientCin = b.PatientCin
 	JOIN doctorschedule c
 		On b.scheduleId=c.scheduleId
 	JOIN doctor d
-	ON d.icDoctor = c.doctor
-	WHERE b.patientIc ='$session'");
+	ON d.DoctorCin = c.doctor
+	WHERE b.PatientCin ='$session'");
 
 if (!$res) {
 die("Error running $sql: " . mysqli_error($con));
@@ -123,7 +123,7 @@ echo "<td>" . $userRow['scheduleDay'] . "</td>";
 echo "<td>" . $userRow['scheduleDate'] . "</td>";
 echo "<td>" . $userRow['startTime'] . "</td>";
 echo "<td>" . $userRow['endTime'] . "</td>";
-echo "<td><a href='invoice.php?appid=".$userRow['appId']."&doctor=".$userRow['icDoctor']."' target='_blank'><span class='glyphicon glyphicon-print' aria-hidden='true'></span></a> </td>";
+echo "<td><a href='invoice.php?appid=".$userRow['appId']."&doctor=".$userRow['DoctorCin']."' target='_blank'><span class='glyphicon glyphicon-print' aria-hidden='true'></span></a> </td>";
 }
 
 echo "</tr>";

@@ -10,22 +10,22 @@ if (isset($_GET['scheduleDate']) && isset($_GET['appid'])) {
 }
 // on b.icPatient = a.icPatient
 $res = mysqli_query($con,"SELECT d.*, a.*, b.* FROM DOCTOR d , doctorschedule a INNER JOIN patient b
-WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.icPatient=$session and a.doctor = '".$_SESSION['doctor_cne']."'");
+WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.PatientCin='$session' and a.doctor = '".$_SESSION['doctor_cne']."'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 	
 //INSERT
 if (isset($_POST['appointment'])) {
-$patientIc = mysqli_real_escape_string($con,$userRow['icPatient']);
+$cin_patient = mysqli_real_escape_string($con,$userRow['PatientCin']);
 $scheduleid = mysqli_real_escape_string($con,$appid);
 $symptom = mysqli_real_escape_string($con,$_POST['symptom']);
 $comment = mysqli_real_escape_string($con,$_POST['comment']);
 $avail = "notavail";
 
 
-$query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment  )
-VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment') ";
+$query = "INSERT INTO appointment (  PatientCin , scheduleId , appSymptom , appComment  )
+VALUES ( '$cin_patient', '$scheduleid', '$symptom', '$comment') ";
 
 //update table appointment schedule
 $sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
@@ -95,8 +95,8 @@ header("Location: patient/patient.php");
 					<ul class="nav navbar-nav">
 						<ul class="nav navbar-nav">
 							<li><a href="patient.php">Home</a></li>
-							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>">Appointment</a></li>
+							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Appointment</a></li>
 						</ul>
 					</ul>
 					
@@ -105,10 +105,10 @@ header("Location: patient/patient.php");
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="glyphicon glyphicon-file"></i> Appointment</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Appointment</a>
 								</li>
 								<li class="divider"></li>
 								<li>
@@ -166,7 +166,7 @@ header("Location: patient/patient.php");
 												<div class="panel-body">
 													
 													Nom est Prenom: <?php echo $userRow['patientFirstName'] ?> <?php echo $userRow['patientLastName'] ?><br>
-													CNE : <?php echo $userRow['icPatient'] ?><br>
+													CNE : <?php echo $userRow['PatientCin'] ?><br>
 													Nimiro telephone: <?php echo $userRow['patientPhone'] ?><br>
 													Address : <?php echo $userRow['patientAddress'] ?>
 												</div>

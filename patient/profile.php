@@ -6,7 +6,7 @@ if(!isset($_SESSION['patientSession']))
 {
 header("Location: ../index.php");
 }
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$_SESSION['patientSession']);
+$res=mysqli_query($con,"SELECT * FROM patient WHERE PatientCin='".$_SESSION['patientSession']."'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 ?>
 <!-- update -->
@@ -23,7 +23,7 @@ $patientPhone = $_POST['patientPhone'];
 $patientEmail = $_POST['patientEmail'];
 $patientId = $_POST['patientId'];
 // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
-$res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE icPatient=".$_SESSION['patientSession']);
+$res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE PatientCin=".$_SESSION['patientSession']);
 // $userRow=mysqli_fetch_array($res);
 header( 'Location: profile.php' ) ;
 }
@@ -59,27 +59,20 @@ $widowed = "checked";
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>Patient Dashboard</title>
-		<!-- Bootstrap -->
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 		<link href="assets/css/default/style.css" rel="stylesheet">
-		<!-- <link href="assets/css/default/style1.css" rel="stylesheet"> -->
 		<link href="assets/css/default/blocks.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker3.css" rel="stylesheet">
-		<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 		<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-		<!--Font Awesome (added because you use icons in your prepend/append)-->
 		<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
-		<!-- <link href="assets/css/material.css" rel="stylesheet"> -->
 	</head>
 	<body>
 		
-		<!-- navigation -->
+		<!-- Menu -->
 		<nav class="navbar navbar-default " role="navigation">
 			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
@@ -94,8 +87,8 @@ $widowed = "checked";
 					<ul class="nav navbar-nav">
 						<ul class="nav navbar-nav">
 							<li><a href="patient.php">Home</a></li>
-							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>">Rendez vous</a></li>
+							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Rendez vous</a></li>
 						</ul>
 					</ul>
 					
@@ -104,10 +97,10 @@ $widowed = "checked";
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez Vous</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez Vous</a>
 								</li>
 								<li class="divider"></li>
 								<li>
@@ -119,7 +112,7 @@ $widowed = "checked";
 				</div>
 			</div>
 		</nav>
-		<!-- navigation -->
+		<!-- Menu -->
 		
 		<div class="container">
 			<section style="padding-bottom: 50px; padding-top: 50px;">
@@ -222,7 +215,7 @@ $widowed = "checked";
 												<tbody>
 													<tr>
 														<td>CNE :</td>
-														<td><?php echo $userRow['icPatient']; ?></td>
+														<td><?php echo $userRow['PatientCin']; ?></td>
 													</tr>
 													<tr>
 														<td>Prénom:</td>

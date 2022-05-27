@@ -8,7 +8,7 @@ $res = mysqli_query($con,"SELECT * FROM doctorschedule WHERE scheduleDate='$q'")
 
 
 if (!$res) {
-die("Error running $sql: " . mysqli_error());
+die("Error running $sql: " . mysqli_error($con));
 }
 
 

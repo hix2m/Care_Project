@@ -124,7 +124,7 @@
                                                 echo $row['Specialite'] ?>
                                            
                                             </div>
-                                            <button type="submit" class="btn" name="rendez_vous" value="<?php echo $row['icDoctor']  ?>"> Prenez Rendez Vous <ion-icon name="checkbox-sharp"></ion-icon></button>
+                                            <button type="submit" class="btn" name="rendez_vous" value="<?php echo $row['DoctorCin']  ?>"> Prenez Rendez Vous <ion-icon name="checkbox-sharp"></ion-icon></button>
                                         </div>
                                     </form>
                                             

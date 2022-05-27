@@ -9,7 +9,7 @@ header("Location: ../index.php");
 $usersession = $_SESSION['patientSession'];
 
 
-$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM patient WHERE PatientCin='".$usersession."'");
 
 if ($res===false) {
 	echo mysqli_error($con);
@@ -59,8 +59,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 					<ul class="nav navbar-nav">
 						<ul class="nav navbar-nav">
 							 <li><a href="patient.php">Home</a></li>
-							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>">Rendez vous </a></li>
+							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Rendez vous </a></li>
 						</ul>
 					</ul>
 					
@@ -69,10 +69,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
-									<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez vous</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez vous</a>
 								</li>
 								<li class="divider"></li>
 								<li>
