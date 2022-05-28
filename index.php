@@ -148,6 +148,7 @@ if (isset($_POST['signup'])) {
         </nav>
         <!-- navigation -->
 
+        <!-- Faire une modal pour Creer un compte -->
         <!-- modal container start -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -189,6 +190,7 @@ if (isset($_POST['signup'])) {
                                             <div class="col-xs-4 col-md-4">
                                                 <select name="month" class = "form-control input-lg" required>
                                                     <option value="">Mois</option>
+                                                    <!-- AFFICHER LES MOIS -->
                                                     <?php
                                                     $months = ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'];
                                                     for ($i=0; $i < 12; $i++) { ?>
@@ -198,6 +200,7 @@ if (isset($_POST['signup'])) {
                                             </div>
                                             <div class="col-xs-4 col-md-4">
                                                 <select name="day" class = "form-control input-lg" required>
+                                                    <!-- AFFICHER LES JOURS -->
                                                     <option value="">Jour</option>
                                                     <?php for ($i=1; $i <= 31; $i++) { ?>
                                                         <option value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -206,6 +209,7 @@ if (isset($_POST['signup'])) {
                                             </div>
                                             <div class="col-xs-4 col-md-4">
                                                 <select name="year" class = "form-control input-lg" required>
+                                                    <!-- AFFICHER LES ANNEES -->
                                                     <option value="">Année</option>
                                                     <?php for ($i=date("Y")-100; $i <= date("Y")-18; $i++) { ?>
                                                         <option value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -213,17 +217,17 @@ if (isset($_POST['signup'])) {
                                                 </select>
                                             </div>
                                         </div>
-                                        <label>Gender : </label>
+                                        <label>Genre : </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="patientGender" value="male" required/>Male
+                                            <input type="radio" name="patientGender" value="male" required/>Homme
                                         </label>
                                         <label class="radio-inline" >
-                                            <input type="radio" name="patientGender" value="female" required/>Female
+                                            <input type="radio" name="patientGender" value="female" required/>Femme
                                         </label>
                                         <br />
-                                        <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
+                                        <span class="help-block">En cliquant sur Créer mon compte, vous acceptez nos Conditions et que vous avez lu notre Politique d’utilisation des données, y compris notre Utilisation des cookies.</span>
                                         
-                                        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit" name="signup" id="signup">Create my account</button>
+                                        <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit" name="signup" id="signup">Créer mon compte</button>
                                     </form>
                                     
                                 </div>
@@ -240,20 +244,35 @@ if (isset($_POST['signup'])) {
         <section id="promo-1" class="content-block promo-1 min-height-600px bg-offwhite">
             <style>
                 .Header h1{
-                    color: black;
+                    font-family:'Times New Roman', Times, serif;
+                    color: rgb(0, 171, 88);
                     text-align: center;
+                    font-size: 100px;
+                    text-shadow: 2px 2px 6px black;
                     
                 }
+                .overlay {
+                    background-color: rgba(0,0,0,0.5);
+                    padding: 2px 5px 25px 5px;
+                }
+
+                h3 {
+                    color: white;
+                    text-shadow: 2px 2px 6px #669ae1;
+                }
+
+                
                 .Header{
                     margin: auto auto;
                     text-align: center;
                 }
             </style>
+            
            <div class="Header">
-               <h1>Care Project </h1>
-                <p>Created By <i> Hichame Alloni </i>
-                   and <i>Mohamed Ait Said</i> 
-                </p>
+                <div class="overlay">
+                    <h1><strong>Care</strong></h1>
+                    <h3><b>Vous pouvez chercher un docteur et prendre avec lui un rendez-vous plus facilement!<b></h3>
+                </div>
                 <section id="content-1-9" class="content-1-9 ">
                     <?php
                             include_once("home.php");
@@ -269,8 +288,12 @@ if (isset($_POST['signup'])) {
         </section>
        
         <div class="copyright-bar bg-black">
+            
             <div class="container">
-                <p class="pull-right small"><a href="doctorlogin.php">Doctor</a></p>
+                <p class="pull-left" style="color: white; opacity: 0.5;">Créer par <i> Hicham Allouni </i>
+                        et <i>Mohamed Ait Said</i> 
+                </p>
+                <p class="pull-right"><a href="doctorlogin.php">Doctor</a></p>
             </div>
         </div>
     </div>
@@ -287,7 +310,7 @@ if (isset($_POST['signup'])) {
     </script>
     <!-- date start -->
   
-<script>
+<!-- <script>
     $(document).ready(function(){
         var date_input=$('input[name="date"]'); 
         var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
@@ -299,7 +322,7 @@ if (isset($_POST['signup'])) {
         })
 
     })
-</script>
+</script> -->
 
     <!-- date end -->
    
