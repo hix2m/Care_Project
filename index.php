@@ -3,6 +3,7 @@ include_once 'assets/conn/dbconnect.php';
 // include_once 'assets/conn/server.php';
 ?>
 
+<!-- just for test -->
 
 <!-- Se Connecter  -->
 <!-- check session -->
