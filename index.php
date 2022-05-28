@@ -127,7 +127,7 @@ if (isset($_POST['signup'])) {
                                             <form class="form" role="form" method="POST" accept-charset="UTF-8" >
                                                 <div class="form-group">
                                                     <label class="sr-only" for="PatientCin">Email</label>
-                                                    <input type="text" class="form-control" name="PatientCin" placeholder="IC Number" required>
+                                                    <input type="text" class="form-control" name="PatientCin" placeholder="Entrer votre email ou cne" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="sr-only" for="password">Password</label>
@@ -287,7 +287,7 @@ if (isset($_POST['signup'])) {
                
         </section>
        
-        <div class="copyright-bar bg-black">
+        <!--div class="copyright-bar bg-black">
             
             <div class="container">
                 <p class="pull-left" style="color: white; opacity: 0.5;">Créer par <i> Hicham Allouni </i>
@@ -295,7 +295,7 @@ if (isset($_POST['signup'])) {
                 </p>
                 <p class="pull-right"><a href="doctorlogin.php">Doctor</a></p>
             </div>
-        </div>
+        </div-->
     </div>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/date/bootstrap-datepicker.js"></script>
@@ -325,6 +325,9 @@ if (isset($_POST['signup'])) {
 </script> -->
 
     <!-- date end -->
+    <?php
+    include("footer.php");
+    ?>
    
 </body>
 </html>

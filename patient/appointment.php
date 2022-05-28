@@ -101,7 +101,7 @@ if (isset($_POST['appointment'])) {
 						<ul class="nav navbar-nav">
 							<li><a href="patient.php">Home</a></li>
 							<!-- <li><a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>" >Profile</a></li> -->
-							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Appointment</a></li>
+							<li><a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>">Rendez-Vous</a></li>
 						</ul>
 					</ul>
 					
@@ -113,7 +113,7 @@ if (isset($_POST['appointment'])) {
 									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Appointment</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez-Vous</a>
 								</li>
 								<li class="divider"></li>
 								<li>

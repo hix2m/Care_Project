@@ -32,7 +32,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 		<link href="assets/css/default/blocks.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker.css" rel="stylesheet">
 		<link href="assets/css/date/bootstrap-datepicker3.css" rel="stylesheet">
-		
+		<link rel="stylesheet" href="../footer_style.css">
 		<link href="style.css" rel="stylesheet">
 		<link rel="stylesheet" href="scrol.css">
            
@@ -103,7 +103,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 		    </div>
 		</div>
 		<!-- navigation -->
-		<?php include_once("liste_doctor.php"); ?>	
+		<?php include_once("liste_doctor.php"); ?>
+		<?php include("../footer.php"); ?>	
 		<script src="assets/js/jquery.js"></script>
 		<script src="assets/js/date/bootstrap-datepicker.js"></script>
 		<script src="assets/js/moment.js"></script>

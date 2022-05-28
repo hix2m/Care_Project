@@ -237,9 +237,6 @@ $widowed = "checked";
 																<label><input type="radio" name="patientMaritialStatus" value="married" <?php echo $married; ?>>Married</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientMaritialStatus" value="separated" <?php echo $separated; ?>>Separated</label>
-															</div>
-															<div class="radio">
 																<label><input type="radio" name="patientMaritialStatus" value="divorced" <?php echo $divorced; ?>>Divorced</label>
 															</div>
 															<div class="radio">

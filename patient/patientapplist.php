@@ -23,7 +23,7 @@ $userRow=mysqli_fetch_assoc($res);
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Liste De Rendez Vous </title>
 		<link href="assets/css/material.css" rel="stylesheet">
-		
+		<link rel="stylesheet" href="../footer_style.css">
 		<link href="assets/css/default/style.css" rel="stylesheet">
 		<link href="assets/css/default/blocks.css" rcel="stylesheet">
 		<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" />
@@ -141,6 +141,9 @@ echo "</table>";
 </div>
 </div>
 </div>
+<?php 
+include('../footer.php');
+?>
 <!-- display appoinment end -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
