@@ -52,7 +52,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="patient.php"><img alt="Brand" src="assets/img/logo2.png" height="40px"></a>
+					<a class="navbar-brand" href="patient.php" style="padding-top: 15px; text-align: center; color: rgb(0, 171, 88); font-family:'Times New Roman', Times, serif; font-size: 40px;"><span id="logoCare">Care</span></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -72,11 +72,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 									<a href="profile.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
 								</li>
 								<li>
-									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="glyphicon glyphicon-file"></i> Rendez vous</a>
+									<a href="patientapplist.php?patientId=<?php echo $userRow['PatientCin']; ?>"><i class="fa fa-list-alt" aria-hidden="true"> Rendez-vous</i>
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="patientlogout.php?logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+									<a href="patientlogout.php?logout"><i class="fa fa-fw fa-power-off"></i>Deconnecter</a>
 								</li>
 							</ul>
 						</li>
@@ -85,7 +85,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 			</div>
 		</nav>
 		<div class="head">
-			<h2 class="text" data-text="Care Project">Care Project</h2>
+			<h2 class="text" style="color: #00ff72" data-text="Care">Care</h2>
+			<h5 class="text" style="font-size: 35px; margin-top: -200px;">Votre santé est notre priorité</h5>
 		</div>
 		<div class="lod">
 			<div class="loader">

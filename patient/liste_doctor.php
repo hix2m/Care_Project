@@ -80,7 +80,7 @@
                         while($row = mysqli_fetch_assoc($res1)){
                             ?>
                                 <div class="card1">
-                                   <form action="take_rendez_vous.php" method="POST">
+                                   <form action="take_appointment.php" method="POST">
                                         <div class="img-wrapper">
                                             <?php 
                                                 if($row['image_profile'] != null){

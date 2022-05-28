@@ -3,6 +3,14 @@ body {
     background-color: #EAEAEA !important;
 }
 
+#logoCare {
+    padding-top: 5px;
+    text-align: center;
+    color: rgb(0, 171, 88);
+    font-family:'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
 #login-dp {
     min-width: 250px;
     padding: 14px 14px 0;
