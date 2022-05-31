@@ -7,7 +7,7 @@ if(!isset($_SESSION['doctorSession']))
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorCin='$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
@@ -76,14 +76,14 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                         <li>
-                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <li class="active">
+                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> tableau de bord</a>
                         </li>
                         <li>
-                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> Doctor Schedule</a>
+                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> horaire du médecin</a>
                         </li>
-                        <li class="active">
-                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Patient List</a>
+                        <li>
+                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Liste des patients</a>
                         </li>
                     </ul>
                 </div>
@@ -98,11 +98,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     <div class="row">
                         <div class="col-lg-12">
                             <h2 class="page-header">
-                            Patient List
+                            Liste des patients
                             </h2>
                             <ol class="breadcrumb">
                                 <li class="active">
-                                    <i class="fa fa-calendar"></i> Patient List
+                                    <!-- <i class="fa fa-calendar"></i> Patient List -->
                                 </li>
                             </ol>
                         </div>
@@ -116,7 +116,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <div class="panel-heading">
                             <h3 class="panel-title">List of Patients</h3>
                             <div class="pull-right">
-                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filtrer</button>
                         </div>
                         </div>
                         <!-- panel heading end -->
@@ -127,15 +127,16 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control" placeholder="patient Ic" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Name" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Password" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="ContactNo." disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="patient Cin" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Mot de passe" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="telephone" disabled></th>
                                     <!-- <th><input type="text" class="form-control" placeholder="Email" disabled></th> -->
-                                    <th><input type="text" class="form-control" placeholder="Gender" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Genre" disabled></th>
                                     <th><input type="text" class="form-control" placeholder="Status" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Birthdate" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Address" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Date Naissance" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Addresse" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Supprimer" disabled></th>
                                 </tr>
                             </thead>
                             
@@ -149,17 +150,18 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                               
                                 echo "<tbody>";
                                 echo "<tr>";
-                                    echo "<td>" . $patientRow['icPatient'] . "</td>";
+                                    echo "<td>" . $patientRow['PatientCin'] . "</td>";
                                     echo "<td>" . $patientRow['patientLastName'] . "</td>";
                                     echo "<td>" . $patientRow['password'] . "</td>";
                                     echo "<td>" . $patientRow['patientPhone'] . "</td>";
                                     // echo "<td>" . $patientRow['patientEmail'] . "</td>";
                                     echo "<td>" . $patientRow['patientGender'] . "</td>";
                                     echo "<td>" . $patientRow['patientMaritialStatus'] . "</td>";
-                                    echo "<td>" . $patientRow['patientDOB'] . "</td>";
+                                    echo "<td>" . $patientRow['patientDN'] . "</td>";
                                     echo "<td>" . $patientRow['patientAddress'] . "</td>";
                                     echo "<form method='POST'>";
-                                    echo "<td class='text-center'><a href='#' id='".$patientRow['icPatient']."' class='delete'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>
+                                    echo "<td class='text-center'><a href='#' id='".$patientRow['PatientCin']."' class='delete'><i class='fa fa-trash' aria-hidden='true'></i>
+                                    </a>
                             </td>";
                                
                             } 
@@ -168,7 +170,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                        echo "</table>";
                        echo "<div class='panel panel-default'>";
                        echo "<div class='col-md-offset-3 pull-right'>";
-                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Update</button>";
+                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Mise à jour</button>";
                         echo "</div>";
                         echo "</div>";
                         ?>

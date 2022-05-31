@@ -46,7 +46,7 @@
                 <legend>Recherche</legend>
                 
                 <select class="select mt-3" name="ville" id="sel-ville">
-                    <option value="null" <?php if($vi == "null"){echo "selected";} ?>>Select Ville</option>
+                    <option value="null" <?php if($vi == "null"){echo "selected";} ?>>Selectioner Ville</option>
                     <?php
                     while($ville_row = mysqli_fetch_assoc($Ville)){
                         ?>
@@ -56,7 +56,7 @@
                     ?>
                 </select>
                 <select class="select" name="specialite" id="sel-specialite">
-                    <option value="null"  <?php if($spec =="null" ){echo "selected";} ?>>Select Speciality</option>
+                    <option value="null"  <?php if($spec =="null" ){echo "selected";} ?>>Selectionner Specialité</option>
                     <?php
                     while($row_specialite = mysqli_fetch_assoc($res_specialite)){
                         ?>
@@ -136,14 +136,14 @@
 
                     }else{
                         ?>
-                        <h1 style="text-align: centrer;">Aucun Doctor Trouver</h1>
+                        <h1 style="text-align: centrer;">Aucun Docteur Trouver</h1>
                         <?php
                     }
                    
                 } 
                 else{
                     ?>
-                    <h1> Search For Doctors </h1>
+                    <h1> Rechercher un docteur </h1>
                     <?php 
                 }
                 ?>

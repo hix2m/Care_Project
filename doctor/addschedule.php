@@ -7,7 +7,7 @@ if(!isset($_SESSION['doctorSession']))
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorCin='$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 // insert
 
@@ -56,7 +56,7 @@ alert('Added fail. Please try again.');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Welcome Dr <?php echo $userRow['doctorFirstName'];?> <?php echo $userRow['doctorLastName'];?></title>
+        <title>Bienvevue Dr <?php echo $userRow['doctorFirstName'];?> <?php echo $userRow['doctorLastName'];?></title>
         <!-- Bootstrap Core CSS -->
         <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
         <link href="assets/css/material.css" rel="stylesheet">
@@ -112,14 +112,14 @@ alert('Added fail. Please try again.');
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
                         <li class="active">
-                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> Doctor Schedule</a>
+                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> tableau de bord</a>
                         </li>
                         <li>
-                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Patient List</a>
+                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> horaire du médecin</a>
+                        </li>
+                        <li>
+                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Liste des patients</a>
                         </li>
                     </ul>
                 </div>
@@ -134,11 +134,11 @@ alert('Added fail. Please try again.');
                     <div class="row">
                         <div class="col-lg-12">
                             <h2 class="page-header">
-                            Doctor Schedule
+                            horaire du médecin
                             </h2>
                             <ol class="breadcrumb">
                                 <li class="active">
-                                    <i class="fa fa-calendar"></i> Schedule
+                                    <!-- <i class="fa fa-calendar"></i> Schedule -->
                                 </li>
                             </ol>
                         </div>
@@ -150,7 +150,7 @@ alert('Added fail. Please try again.');
 
                         <!-- panel heading starat -->
                         <div class="panel-heading">
-                            <h3 class="panel-title">Add Schedule</h3>
+                            <h3 class="panel-title">Ajouter horaire</h3>
                         </div>
                         <!-- panel heading end -->
 
@@ -180,7 +180,7 @@ alert('Added fail. Please try again.');
                                  </div>
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="scheduleday">
-                                   Day
+                                   Jour
                                    <span class="asteriskField">
                                     *
                                    </span>
@@ -188,32 +188,32 @@ alert('Added fail. Please try again.');
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="scheduleday" name="scheduleday" required>
                                     <option value="Monday">
-                                     Monday
+                                     Lundi
                                     </option>
                                     <option value="Tuesday">
-                                     Tuesday
+                                     Mardi
                                     </option>
                                     <option value="Wednesday">
-                                     Wednesday
+                                     Mercredi
                                     </option>
                                     <option value="Thursday">
-                                     Thursday
+                                     Jeudi
                                     </option>
                                     <option value="Friday">
-                                     Friday
+                                     Vendredi
                                     </option>
                                     <option value="Saturday">
-                                     Saturday
+                                     Samedi
                                     </option>
                                     <option value="Sunday">
-                                     Sunday
+                                     Dimance
                                     </option>
                                    </select>
                                   </div>
                                  </div>
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="starttime">
-                                   Start Time
+                                  heure de début
                                    <span class="asteriskField">
                                     *
                                    </span>
@@ -231,7 +231,7 @@ alert('Added fail. Please try again.');
                                  </div>
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="endtime">
-                                   End Time
+                                  heure de fin
                                    <span class="asteriskField">
                                     *
                                    </span>
@@ -248,7 +248,7 @@ alert('Added fail. Please try again.');
                                  </div>
                                  <div class="form-group form-group-lg">
                                   <label class="control-label col-sm-2 requiredField" for="bookavail">
-                                   Availabilty
+                                  disponibilité
                                    <span class="asteriskField">
                                     *
                                    </span>
@@ -256,10 +256,10 @@ alert('Added fail. Please try again.');
                                   <div class="col-sm-10">
                                    <select class="select form-control" id="bookavail" name="bookavail" required>
                                     <option value="available">
-                                     available
+                                     Disponible
                                     </option>
                                     <option value="notavail">
-                                     notavail
+                                     non disponible
                                     </option>
                                    </select>
                                   </div>
@@ -267,7 +267,7 @@ alert('Added fail. Please try again.');
                                  <div class="form-group">
                                   <div class="col-sm-10 col-sm-offset-2">
                                    <button class="btn btn-primary " name="submit" type="submit">
-                                    Submit
+                                    Envoyer
                                    </button>
                                   </div>
                                  </div>
@@ -287,9 +287,9 @@ alert('Added fail. Please try again.');
 
                         <!-- panel heading starat -->
                         <div class="panel-heading">
-                            <h3 class="panel-title">List of Patients</h3>
+                            <h3 class="panel-title">listes des Patients</h3>
                             <div class="pull-right">
-                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filtrer</button>
                         </div>
                         </div>
                         <!-- panel heading end -->
@@ -300,12 +300,11 @@ alert('Added fail. Please try again.');
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr class="filters">
-                                    <th><input type="text" class="form-control" placeholder="scheduleId" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="scheduleDate" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="scheduleDay" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="startTime." disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="endTime" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="bookAvail" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Date" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Jour" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Debut" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Fin" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Disponibilté" disabled></th>
                                 </tr>
                             </thead>
                             
@@ -319,7 +318,6 @@ alert('Added fail. Please try again.');
                               
                                 echo "<tbody>";
                                 echo "<tr>";
-                                    echo "<td>" . $doctorschedule['scheduleId'] . "</td>";
                                     echo "<td>" . $doctorschedule['scheduleDate'] . "</td>";
                                     echo "<td>" . $doctorschedule['scheduleDay'] . "</td>";
                                     echo "<td>" . $doctorschedule['startTime'] . "</td>";
@@ -335,7 +333,7 @@ alert('Added fail. Please try again.');
                        echo "</table>";
                        echo "<div class='panel panel-default'>";
                        echo "<div class='col-md-offset-3 pull-right'>";
-                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Update</button>";
+                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Mise à jour</button>";
                         echo "</div>";
                         echo "</div>";
                         ?>

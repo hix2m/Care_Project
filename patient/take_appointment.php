@@ -32,6 +32,8 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Prendez rendez vous </title>
 
+		<link rel="stylesheet" href="loding.css">
+		<link rel="stylesheet" href="../footer_style.css">
 		<link href="assets/css/material.css" rel="stylesheet">
 		<link href="assets/css/default/style.css" rel="stylesheet">
 		<link href="assets/css/default/blocks.css" rel="stylesheet">
@@ -53,7 +55,7 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="patient.php"><img alt="Brand" src="assets/img/logo2.png" height="40px"></a>
+					<a class="navbar-brand" href="patient.php" style="padding-top: 10px; text-align: center; color: rgb(0, 171, 88); font-family:'Times New Roman', Times, serif; font-size: 40px;"><span id="logoCare">Care</span></a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
@@ -87,7 +89,7 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 		<!-- navigation -->
 		
 		<!-- 1st section start -->
-		<section id="promo-1" class="content">
+		<section id="promo-1" class="content" style="padding: 30px">
 			<div class="content1">
 				<div class="row">
 					<div class="col-xs-12 col-md-8">
@@ -192,7 +194,7 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 				</div>
 			</div>
 		</section>
-		<div class="commentaire">
+		<div class="commentaire" style="padding: 30px">
 						<?php
 
 				$db = "db_healthcare";
@@ -414,6 +416,8 @@ $doctor =$doctorRow['doctorFirstName']." ".$doctorRow['doctorLastName'];
 		})
 		</script>
 		<!-- date end -->
+
+		<?php include("../footer.php"); ?>	
 		
 		
 	</body>

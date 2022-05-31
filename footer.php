@@ -28,7 +28,7 @@
                 <a href="#">Blog</a>
             </p>
 
-            <p class="footer-company-name">Create By : <strong>Alooni Hicham Et Mohamed Ait Said</strong> Projet Fin Formation</p>
+            <p class="footer-company-name">Create By : <strong>Allouni Hicham Et Mohamed Ait Said</strong> Projet Fin Formation</p>
         </div>
 
         <div class="footer-center">

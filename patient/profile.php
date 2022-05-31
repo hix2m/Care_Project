@@ -16,41 +16,41 @@ if (isset($_POST['submit'])) {
 $patientFirstName = $_POST['patientFirstName'];
 $patientLastName = $_POST['patientLastName'];
 $patientMaritialStatus = $_POST['patientMaritialStatus'];
-$patientDOB = $_POST['patientDOB'];
+$patientDN = $_POST['patientDN'];
 $patientGender = $_POST['patientGender'];
 $patientAddress = $_POST['patientAddress'];
 $patientPhone = $_POST['patientPhone'];
 $patientEmail = $_POST['patientEmail'];
 $patientId = $_POST['patientId'];
 // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
-$res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientMaritialStatus='$patientMaritialStatus', patientDOB='$patientDOB', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE PatientCin=".$_SESSION['patientSession']);
+$res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientMaritialStatus='$patientMaritialStatus', patientDN='$patientDN', patientGender='$patientGender', patientAddress='$patientAddress', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE PatientCin=".$_SESSION['patientSession']);
 // $userRow=mysqli_fetch_array($res);
 header( 'Location: profile.php' ) ;
 }
 ?>
 <?php
-$male="";
-$female="";
-if ($userRow['patientGender']=='male') {
-$male = "checked";
-}elseif ($userRow['patientGender']=='female') {
-$female = "checked";
+$homme="";
+$femme="";
+if ($userRow['patientGender']=='homme') {
+$homme = "checked";
+}elseif ($userRow['patientGender']=='femme') {
+$femme = "checked";
 }
-$single="";
-$married="";
-$separated="";
-$divorced="";
-$widowed="";
-if ($userRow['patientMaritialStatus']=='single') {
-$single = "checked";
-}elseif ($userRow['patientMaritialStatus']=='married') {
-$married = "checked";
-}elseif ($userRow['patientMaritialStatus']=='separated') {
-$separated = "checked";
-}elseif ($userRow['patientMaritialStatus']=='divorced') {
-$divorced = "checked";
-}elseif ($userRow['patientMaritialStatus']=='widowed') {
-$widowed = "checked";
+$celibataire="";
+$marie="";
+$separe="";
+$divorce="";
+$veuf="";
+if ($userRow['patientMaritialStatus']=='celibataire') {
+$celibataire = "checked";
+}elseif ($userRow['patientMaritialStatus']=='marie') {
+$marie = "checked";
+}elseif ($userRow['patientMaritialStatus']=='separe') {
+$separe = "checked";
+}elseif ($userRow['patientMaritialStatus']=='divorce') {
+$divorce = "checked";
+}elseif ($userRow['patientMaritialStatus']=='veuf') {
+$veuf = "checked";
 }
 ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ $widowed = "checked";
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="patient.php"><img alt="Brand" src="assets/img/logo2.png" height="40px"></a>
+					<a class="navbar-brand" href="patient.php" style="padding-top: 10px; text-align: center; color: rgb(0, 171, 88); font-family:'Times New Roman', Times, serif; font-size: 40px;"><span id="logoCare">Care</span></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -137,7 +137,7 @@ $widowed = "checked";
 							?>
 								<div class="description">
 								<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
-									<h5> <strong> Date de Naissace : <?php echo $userRow['patientDOB']; ?> </strong></h5>
+									<h5> <strong> Date de Naissace : <?php echo $userRow['patientDN']; ?> </strong></h5>
 									<h5> <strong> Email : <?php echo $userRow['patientEmail']; ?> </strong></h5>
 									<hr />
 									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">metre a jour Profile</button>
@@ -164,7 +164,7 @@ $widowed = "checked";
 												</tr>
 												<tr>
 													<td>Date de Naissance </td>
-													<td><?php echo $userRow['patientDOB']; ?></td>
+													<td><?php echo $userRow['patientDN']; ?></td>
 												</tr>
 												<tr>
 													<td>Sexe</td>
@@ -176,7 +176,7 @@ $widowed = "checked";
 													</td>
 												</tr>
 												<tr>
-													<td>Nimiro Telephone</td>
+													<td>Numero Telephone</td>
 													<td><?php echo $userRow['patientPhone']; ?>
 													</td>
 												</tr>
@@ -214,7 +214,7 @@ $widowed = "checked";
 											<table class="table table-user-information">
 												<tbody>
 													<tr>
-														<td>CNE :</td>
+														<td>CIN :</td>
 														<td><?php echo $userRow['PatientCin']; ?></td>
 													</tr>
 													<tr>
@@ -231,23 +231,23 @@ $widowed = "checked";
 														<td>Situation Familiale:</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientMaritialStatus" value="single" <?php echo $single; ?>>Single</label>
+																<label><input type="radio" name="patientMaritialStatus" value="celibataire" <?php echo $celibataire; ?>>Célibateire</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientMaritialStatus" value="married" <?php echo $married; ?>>Married</label>
+																<label><input type="radio" name="patientMaritialStatus" value="marie" <?php echo $marie; ?>>Marié</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientMaritialStatus" value="divorced" <?php echo $divorced; ?>>Divorced</label>
+																<label><input type="radio" name="patientMaritialStatus" value="divorce" <?php echo $divorce; ?>>Divorcé</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientMaritialStatus" value="widowed" <?php echo $widowed; ?>>Widowed</label>
+																<label><input type="radio" name="patientMaritialStatus" value="veuf" <?php echo $veuf; ?>>Veuf</label>
 															</div>
 														</td>
 													</tr>
 													<!-- radio button end -->
 													<tr>
 														<td>Date Naissance</td>
-														<!-- <td><input type="text" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?>"  /></td> -->
+														<!-- <td><input type="text" class="form-control" name="patientDN" value="<?php echo $userRow['patientDN']; ?>"  /></td> -->
 														<td>
 															<div class="form-group ">
 																
@@ -256,7 +256,7 @@ $widowed = "checked";
 																		<i class="fa fa-calendar">
 																		</i>
 																	</div>
-																	<input class="form-control" id="patientDOB" name="patientDOB" placeholder="MM/DD/YYYY" type="text" value="<?php echo $userRow['patientDOB']; ?>"/>
+																	<input class="form-control" id="patientDN" name="patientDN" placeholder="MM/DD/YYYY" type="text" value="<?php echo $userRow['patientDN']; ?>"/>
 																</div>
 															</div>
 														</td>
@@ -267,17 +267,17 @@ $widowed = "checked";
 														<td>Sexe</td>
 														<td>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Male</label>
+																<label><input type="radio" name="patientGender" value="homme" <?php echo $homme; ?>>Homme</label>
 															</div>
 															<div class="radio">
-																<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Female</label>
+																<label><input type="radio" name="patientGender" value="femme" <?php echo $femme; ?>>Femme</label>
 															</div>
 														</td>
 													</tr>
 													<!-- radio button end -->
 													
 													<tr>
-														<td>Nimiro Telephone</td>
+														<td>Numero de Telephone</td>
 														<td><input type="text" class="form-control" name="patientPhone" value="<?php echo $userRow['patientPhone']; ?>"  /></td>
 													</tr>
 													<tr>
@@ -290,7 +290,7 @@ $widowed = "checked";
 													</tr>
 													<tr>
 														<td>
-															<input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
+															<input type="submit" name="submit" class="btn btn-info" value="Modifier Infos"></td>
 														</tr>
 													</tbody>
 													
@@ -319,7 +319,7 @@ $widowed = "checked";
 			
 			<script type="text/javascript">
 														$(function () {
-														$('#patientDOB').datetimepicker();
+														$('#patientDN').datetimepicker();
 														});
 														</script>
 		</body>

@@ -47,7 +47,7 @@ $userRow=mysqli_fetch_assoc($res);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="patient.php"><img alt="Brand" src="assets/img/logo2.png" height="40px"></a>
+					<a class="navbar-brand" href="patient.php" style="padding-top: 15px; text-align: center; color: rgb(0, 171, 88); font-family:'Times New Roman', Times, serif; font-size: 40px;"><span id="logoCare">Care</span></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -96,8 +96,6 @@ echo "<table class='table table-hover'>";
 echo "<thead>";
 echo "<tr>";
 echo "<th>Nom Doctor</th>";
-echo "<th>Votre Nom</th>";
-echo "<th>Votre Prenom </th>";
 echo "<th>Jour de Rendez Vou </th>";
 echo "<th>Date De Rendez Vous  </th>";
 echo "<th>L'heur de Demmare </th>";
@@ -123,8 +121,6 @@ while ($userRow = mysqli_fetch_array($res)) {
 echo "<tbody>";
 echo "<tr>";
 echo "<td>" . $userRow['doctorFirstName']." ".$userRow['doctorFirstName']. "</td>";
-echo "<td>" . $userRow['patientFirstName'] . "</td>";
-echo "<td>" . $userRow['patientLastName'] . "</td>";
 echo "<td>" . $userRow['scheduleDay'] . "</td>";
 echo "<td>" . $userRow['scheduleDate'] . "</td>";
 echo "<td>" . $userRow['startTime'] . "</td>";

@@ -17,7 +17,7 @@ $doct = mysqli_fetch_array($res_doctor,MYSQLI_ASSOC);
     <body>
         <?php
         if (mysqli_num_rows($res)==0) {
-        echo "<div class='alert alert-danger' role='alert'>Doctor is not available at the moment. Please try again later.</div>";
+        echo "<div class='alert alert-danger' role='alert'>Le docteur n’est pas disponible pour le moment. Veuillez réessayer plus tard.</div>";
         
         } else {
         echo "   <table class='table table-hover'>";

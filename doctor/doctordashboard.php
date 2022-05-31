@@ -7,7 +7,7 @@ if(!isset($_SESSION['doctorSession']))
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorCin='$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
@@ -21,7 +21,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Welcome Dr <?php echo $userRow['doctorFirstName'];?> <?php echo $userRow['doctorLastName'];?></title>
+        <title>Bienvenue Dr <?php echo $userRow['doctorFirstName'];?> <?php echo $userRow['doctorLastName'];?></title>
         <!-- Bootstrap Core CSS -->
         <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
         <link href="assets/css/material.css" rel="stylesheet">
@@ -68,13 +68,13 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <a href="doctordashboard.php"><i class="fa fa-fw fa-dashboard"></i> tableau de bord</a>
                         </li>
                         <li>
-                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> Doctor Schedule</a>
+                            <a href="addschedule.php"><i class="fa fa-fw fa-table"></i> horaire du médecin</a>
                         </li>
                         <li>
-                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Patient List</a>
+                            <a href="patientlist.php"><i class="fa fa-fw fa-edit"></i> Liste des patients</a>
                         </li>
                     </ul>
                 </div>
@@ -93,7 +93,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                             </h2>
                             <ol class="breadcrumb">
                                 <li class="active">
-                                    <i class="fa fa-file"></i> Blank Page
+                                    <!-- <i class="fa fa-file"></i> Blank Page -->
                                 </li>
                             </ol>
                         </div>
@@ -104,9 +104,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     <div class="panel panel-primary filterable">
                         <!-- Default panel contents -->
                        <div class="panel-heading">
-                        <h3 class="panel-title">Appointment List</h3>
+                        <h3 class="panel-title">Liste des rendez-vous</h3>
                         <div class="pull-right">
-                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filter</button>
+                            <button class="btn btn-default btn-xs btn-filter"><span class="fa fa-filter"></span> Filtrer</button>
                         </div>
                         </div>
                         <div class="panel-body">
@@ -132,7 +132,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                             $res=mysqli_query($con,"SELECT a.*, b.*,c.*
                                                     FROM patient a
                                                     JOIN appointment b
-                                                    On a.icPatient = b.patientIc
+                                                    On a.PatientCin = b.patientCin
                                                     JOIN doctorschedule c
                                                     On b.scheduleId=c.scheduleId
                                                     Order By appId desc");
@@ -163,7 +163,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
                                 echo "<tbody>";
                                 echo "<tr class='$status'>";
-                                    echo "<td>" . $appointment['patientIc'] . "</td>";
+                                    echo "<td>" . $appointment['PatientCin'] . "</td>";
                                     echo "<td>" . $appointment['patientLastName'] . "</td>";
                                     echo "<td>" . $appointment['patientPhone'] . "</td>";
                                     echo "<td>" . $appointment['patientEmail'] . "</td>";

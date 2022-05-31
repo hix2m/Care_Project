@@ -93,7 +93,7 @@ if (isset($_POST['appointment'])) {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="patient.php"><img alt="Brand" src="assets/img/logo2.png" height="40px"></a>
+					<a class="navbar-brand" href="patient.php" style="padding-top: 10px; text-align: center; color: rgb(0, 171, 88); font-family:'Times New Roman', Times, serif; font-size: 40px;"><span id="logoCare">Care</span></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -149,7 +149,7 @@ if (isset($_POST['appointment'])) {
 								
 								<div class="description">
 									<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
-									<h5> <strong> Date de Naissace : <?php echo $userRow['patientDOB']; ?> </strong></h5>
+									<h5> <strong> Date de Naissace : <?php echo $userRow['patientDN']; ?> </strong></h5>
 									<h5> <strong> Email : <?php echo $userRow['patientEmail']; ?> </strong></h5>
 									<hr />
 									<!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">mettre a jour Profile</button-->
@@ -172,7 +172,7 @@ if (isset($_POST['appointment'])) {
 													
 													Nom est Prenom: <?php echo $userRow['patientFirstName'] ?> <?php echo $userRow['patientLastName'] ?><br>
 													CNE : <?php echo $userRow['PatientCin'] ?><br>
-													Nimiro telephone: <?php echo $userRow['patientPhone'] ?><br>
+													Numero telephone: <?php echo $userRow['patientPhone'] ?><br>
 													Address : <?php echo $userRow['patientAddress'] ?>
 												</div>
 											</div>
@@ -185,7 +185,7 @@ if (isset($_POST['appointment'])) {
 													Heur: <?php echo $userRow['startTime'] ?> - <?php echo $userRow['endTime'] ?><br>
 													Adress :<?php echo $userRow['doctorAddress'] ?><br>
 													Specialité : <?php echo $userRow['Specialite'] ?><br>
-													Nimiro Telephone Doctor : <?php echo $userRow['doctorPhone'] ?><br>
+													Numero Telephone Doctor : <?php echo $userRow['doctorPhone'] ?><br>
 												</div>
 											</div>
 											
@@ -198,7 +198,7 @@ if (isset($_POST['appointment'])) {
 												<textarea class="form-control" name="comment" required></textarea>
 											</div>
 											<div class="form-group">
-												<input type="submit" name="appointment" id="submit" class="btn btn-primary" value="Make Appointment">
+												<input type="submit" name="appointment" id="submit" class="btn btn-primary" value="Prendre Rendez-vous">
 											</div>
 										</form>
 									</div>

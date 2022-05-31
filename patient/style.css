@@ -159,11 +159,16 @@ select::-ms-expand {
     color: white;
     height: 100%;
 }
+
+.content, .commentaire {
+  padding: 20px;
+}
+
 .content1{
   width: 100%;
   height: auto;
   display: flex;
-flex-direction: row;
+  flex-direction: row;
 /*justify-content: space-between;*/
 flex-flow: wrap;
 padding-bottom: 20px;
